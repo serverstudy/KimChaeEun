@@ -1,5 +1,7 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,14 +11,13 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class) // JUnit에게 스프링 관련 테스트를 할거야. 라고 알리기
 @SpringBootTest // 스프링 부트로 테스트한다.
 public class MemberRepositoryTest {
     // 멤버리포지토리 잘되는지 테스트하기
 
-    @Autowired MemberRepository memberRepository; // Autowired로 MemberRepository를 인젝션받기
+    @Autowired
+    MemberRepository memberRepository; // Autowired로 MemberRepository를 인젝션받기
 
     //라이브템플릿에서 tdd치면 아래 틀나오게 만들어놨음
     @Test
