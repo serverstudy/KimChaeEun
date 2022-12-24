@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 @Getter @Setter
 public class OrderItem {
@@ -13,11 +15,11 @@ public class OrderItem {
     @Column(name = "order_item_id")
     private long id;
 
-    @ManyToOne // 주문상품-상품은 다대일 관계
+    @ManyToOne(fetch = LAZY)  // 주문상품-상품은 다대일 관계
     @JoinColumn(name = "item_id")
     private Item item;
 
-    @ManyToOne // 주문상품-주문은 다대일 관계, 연관 관계의 주인!
+    @ManyToOne(fetch = LAZY)  // 주문상품-주문은 다대일 관계, 연관 관계의 주인!
     @JoinColumn(name = "order_id") //Order의 order_id가 FK
     private Order order;
     private int orderPrice; //주문 당시 가격
