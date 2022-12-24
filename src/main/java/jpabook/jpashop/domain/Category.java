@@ -32,4 +32,17 @@ public class Category {
     
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL) //자신-자식 은 일대다 관계, 부모가 fk 니까 관계의 주인이고, 얘는 parent 필드에 매핑
     private List<Category> child = new ArrayList<>();
+
+
+    //==연관관계 메서드==//
+    //category-child (주인x)
+    public void addChildCategory(Category child) {
+        //부모, 자식 카테고리에 양쪽에 들어가야한다.
+        this.child.add(child); //나
+        child.setParent(this);//너
+    }
 }
+
+
+
+
