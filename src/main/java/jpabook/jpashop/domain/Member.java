@@ -18,7 +18,7 @@ public class Member {
     @Embedded //내장 타입 사용 - @Embeddable이랑 이거랑 둘중 하나만 쓰면되는데 둘다 쓰겠다.
     private Address address;
 
-    @OneToMany(mappedBy = "member")//member와 order는 일대다 관계(중요) - FK
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)//member와 order는 일대다 관계(중요) - FK
     // Order테이블에 있는 member필드에 매핑된다 = 연관관계의 주인이 아님!
     private List<Order> orders = new ArrayList<>();
 

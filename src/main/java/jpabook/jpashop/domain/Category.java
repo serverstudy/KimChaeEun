@@ -30,6 +30,6 @@ public class Category {
     @JoinColumn(name = "parent_id")
     private Category parent; //카테고리가 계층구조니까 부모랑 자식 표현할때 자기자신임
     
-    @OneToMany(mappedBy = "parent") //자신-자식 은 일대다 관계, 부모가 fk 니까 관계의 주인이고, 얘는 parent 필드에 매핑
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL) //자신-자식 은 일대다 관계, 부모가 fk 니까 관계의 주인이고, 얘는 parent 필드에 매핑
     private List<Category> child = new ArrayList<>();
 }

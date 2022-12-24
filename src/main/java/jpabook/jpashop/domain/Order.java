@@ -23,10 +23,10 @@ public class Order {
     private Member member;
 
 
-    @OneToMany(mappedBy = "order") //OrderItem의 order필드와 매핑 - 연관관계의 주인이 아님!
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //OrderItem의 order필드와 매핑 - 연관관계의 주인이 아님!
     private List<OrderItem> orderItems = new ArrayList<>(); //주문 상품 목록
 
-    @OneToOne(fetch = LAZY) //order과 delivery는 일대일 관계, 관게의 주인!
+    @OneToOne(cascade = CascadeType.ALL, fetch = LAZY) //order과 delivery는 일대일 관계, 관게의 주인!
     @JoinColumn(name = "delivery_id") //FK이름
     private Delivery delivery; //배송정보
 
@@ -36,5 +36,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING) //enum 타입 사용
     private OrderStatus status; // 주문 상태 - ORDER, CANCEL enum타입(열거형)클래스 만들기
+
+
 
 }
